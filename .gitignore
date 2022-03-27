@@ -1,7 +1,3 @@
-sanity/node_modules/
-sanity/.env
-sanity/dist/
-
 node_modules/
 .env
 .prettierrc
