@@ -5,8 +5,8 @@
     import logo from '$lib/assets/logo.png';
     import MenuIcon from '$lib/assets/icons/menu.svg';
 
-    let isMobile = true;
-    let menuOpened = false;
+    $: isMobile = true;
+    $: menuOpened = false;
     const menuItems = [
         { name: 'Home', url: '/' },
         { name: 'Sezóny', url: '/seasons' },
