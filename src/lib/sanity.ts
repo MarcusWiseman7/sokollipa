@@ -3,8 +3,8 @@ import sanityClient from '@sanity/client';
 const sanity = sanityClient({
     projectId: 'mgriwqg2',
     dataset: 'production',
-    apiVersion: '2021-10-21',
-    useCdn: false,
+    apiVersion: '2022-04-01',
+    useCdn: true,
 });
 
 export default sanity;

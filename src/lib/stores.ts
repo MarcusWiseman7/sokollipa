@@ -42,11 +42,16 @@ export let appLoading = writable(false);
 
 
 /**
- * HELPER FUNCTIONS
+ * SANITY FETCH FUNCTIONS
  */
 const getHeroImage = async () => {
     const heroQuery = `*[_type == 'hero']`;
     return await sanity.fetch(heroQuery);
+};
+
+const getGallery = async () => {
+    const galleryQuery = `*[_type == 'photoGallery']`;
+    return await sanity.fetch(galleryQuery);
 };
 
 const getSeasons = async () => {
@@ -80,6 +85,10 @@ export const heroImage = readable(null, set => {
 
 export const seasons = readable([], set => {
     getSeasons().then(set).catch(err => console.error(err));
+});
+
+export const galleries = readable([], set => {
+    getGallery().then(set).catch(err => console.error(err));
 });
 
 
