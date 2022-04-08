@@ -1,5 +1,4 @@
 import { derived, readable, writable } from 'svelte/store';
-
 import sanity from '$lib/sanity';
 
 /**

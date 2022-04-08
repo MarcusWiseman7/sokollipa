@@ -42,6 +42,6 @@
         <a href="/" class="my-0.5 mx-0">
             <img src={logo} alt="logo" height="120" width="120" />
         </a>
-        <div class="text-lg mb-5">Marcus Wiseman &copy; {new Date().getFullYear()}</div>
+        <div class="text-sm mb-5">Marcus Wiseman &copy; {new Date().getFullYear()}</div>
     </footer>
 </div>
