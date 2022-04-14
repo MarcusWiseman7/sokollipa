@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { onDestroy, onMount } from 'svelte/internal';
     import { urlFor } from '$lib/image-url';
     import { heroImage, nextAGame } from '$lib/stores';
@@ -17,7 +17,7 @@
     $: bgURL = '';
     $: isMobile = true;
 
-    const getTime = () => {
+    const getTime = (): void => {
         showTime = false;
         nextGameDateTime = new Date($nextAGame.date).getTime();
 
@@ -41,7 +41,7 @@
         }, 1000);
     };
 
-    const checkNextGame = () => {
+    const checkNextGame = (): void => {
         if ($nextAGame?.hasOwnProperty('date')) {
             getTime();
         } else if (cg_counter < 1000) {
@@ -52,7 +52,7 @@
         }
     };
 
-    const checkHeroImage = () => {
+    const checkHeroImage = (): void => {
         if ($heroImage && $heroImage[0].hasOwnProperty('image')) {
             bgURL = urlFor($heroImage[0].image).format('webp').url();
         } else if (hi_counter < 1000) {
@@ -63,15 +63,17 @@
         }
     };
 
-    const setSize = () => (isMobile = window.innerWidth < 1024);
+    const setSize = (): void => {
+        isMobile = window.innerWidth < 1024;
+    };
 
-    onMount(() => {
+    onMount((): void => {
         setSize();
         checkHeroImage();
         checkNextGame();
     });
 
-    onDestroy(() => {
+    onDestroy((): void => {
         if (cg_to) clearTimeout(cg_to);
         if (hi_to) clearTimeout(hi_to);
         if (countingDown) clearInterval(countingDown);
@@ -82,17 +84,17 @@
 
 {#if $heroImage && $heroImage[0]?.hasOwnProperty('image')}
     <div
-        class="fixed left-0 right-0 lg:relative flex flex-col justify-end text-white h-1/2 lg:h-96 bg-no-repeat bg-center bg-cover"
+        class="flex flex-col justify-end text-white h-1/2 lg:h-96 bg-no-repeat bg-center bg-cover"
         style={`background-image: url(${bgURL})`}
     >
         {#if $nextAGame}
             <!-- Mobile countdown -->
             {#if isMobile && showTime}
-                <div class="flex items-center justify-center h-28 lg:h-32 font-bold text-4xl">
+                <div class="flex items-center justify-center h-28 font-bold text-4xl">
                     <span class="fuzz">
-                        {#if days > 0}
+                        {#if parseInt(days) > 0}
                             {days}:{hours}:{minutes}:{seconds}
-                        {:else if hours > 0}
+                        {:else if parseInt(hours) > 0}
                             {hours}:{minutes}:{seconds}
                         {:else}
                             {minutes}:{seconds}
@@ -121,9 +123,9 @@
                     <div class="flex flex-col items-center w-1/2 lg:w-1/3 text-6xl font-bold">
                         {#if showTime}
                             <span class="fuzz">
-                                {#if days > 0}
+                                {#if parseInt(days) > 0}
                                     {days}:{hours}:{minutes}:{seconds}
-                                {:else if hours > 0}
+                                {:else if parseInt(hours) > 0}
                                     {hours}:{minutes}:{seconds}
                                 {:else}
                                     {minutes}:{seconds}
@@ -149,16 +151,25 @@
 
             <!-- Team names / game date row -->
             <div class="flex items-center justify-center h-28 lg:h-32">
-                <span v-if="!isMobile" class="flex flex-col items-center w-1/2 lg:w-1/3 text-3xl font-bold fuzz"
-                    >{$nextAGame.homeTeam.name}</span
-                >
+                {#if !isMobile}
+                    <span v-if="!isMobile" class="flex flex-col items-center w-1/2 lg:w-1/3 text-3xl font-bold fuzz"
+                        >{$nextAGame.homeTeam.name}</span
+                    >
+                {/if}
                 <div class="flex flex-col items-center w-1/2 lg:w-1/3 text-2xl font-bold">
                     <span class="fuzz">{new Date($nextAGame.date).toLocaleDateString()}</span>
-                    <span class="fuzz">{new Date($nextAGame.date).toLocaleTimeString()}</span>
+                    <span class="fuzz"
+                        >{new Date($nextAGame.date).toLocaleTimeString([], {
+                            hour: 'numeric',
+                            minute: '2-digit',
+                        })}</span
+                    >
                 </div>
-                <span v-if="!isMobile" class="flex flex-col items-center w-1/2 lg:w-1/3 text-3xl font-bold fuzz"
-                    >{$nextAGame.awayTeam.name}</span
-                >
+                {#if !isMobile}
+                    <span class="flex flex-col items-center w-1/2 lg:w-1/3 text-3xl font-bold fuzz"
+                        >{$nextAGame.awayTeam.name}</span
+                    >
+                {/if}
             </div>
         {/if}
     </div>

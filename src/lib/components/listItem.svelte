@@ -1,17 +1,18 @@
-<script>
-    export let game;
-    export let clickable;
-
+<script lang="ts">
     import { scorecardObj } from '$lib/stores';
     import { urlFor } from '$lib/image-url';
+    import type { Game } from '$lib/ts-interfaces';
 
-    let liclass =
+    export let game: Game;
+    export let clickable: boolean;
+
+    let liclass: string =
         'flex justify-between p-3 border-b last:border-b-0 border-green-600' +
         (clickable
             ? ' active:bg-green-600 active:bg-opacity-75 hover:bg-green-600 hover:bg-opacity-50 cursor-pointer'
             : '');
 
-    const onClick = () => {
+    const onClick = (): void => {
         if (clickable) scorecardObj.set(game);
     };
 </script>

@@ -1,37 +1,7 @@
 import { derived, readable, writable } from 'svelte/store';
 import sanity from '$lib/sanity';
-
-/**
- * INTERFACES
- */
-interface game {
-    date: Date;
-    awayTeam: {
-        name: String;
-        logo: {};
-    };
-    homeTeam: {
-        name: String;
-        logo: {};
-    };
-    awayTeamScore: Number;
-    homeTeamScore: Number;
-}
-
-interface schedule {
-    _id: String;
-    league: {
-        name: String;
-    };
-    games: [game];
-}
-
-interface season {
-    _id: String;
-    year: Number;
-    schedules: [schedule];
-}
-
+import type { SanityDocument } from '@sanity/client';
+import type { Season } from './ts-interfaces';
 
 /**
  * WRITABLE EXPORTS
@@ -44,18 +14,18 @@ export let appLoading = writable(false);
 /**
  * SANITY FETCH FUNCTIONS
  */
-const getHeroImage = async () => {
-    const heroQuery = `*[_type == 'hero']`;
+const getHeroImage = async (): Promise<SanityDocument[]> => {
+    const heroQuery: string = `*[_type == 'hero']`;
     return await sanity.fetch(heroQuery);
 };
 
-const getGallery = async () => {
-    const galleryQuery = `*[_type == 'photoGallery']`;
+const getGallery = async (): Promise<SanityDocument[]> => {
+    const galleryQuery: string = `*[_type == 'photoGallery']`;
     return await sanity.fetch(galleryQuery);
 };
 
-const getSeasons = async () => {
-    const seasonsQuery = `
+const getSeasons = async (): Promise<SanityDocument[]> => {
+    const seasonsQuery: string = `
         *[_type == 'season']{
             _id,
             year,
@@ -95,7 +65,7 @@ export const galleries = readable([], set => {
 /**
  * DERIVED EXPORTS
  */
-export const currentOrUpcomingASchedule = derived(seasons, ($seasons: [season]) => {
+export const currentOrUpcomingASchedule = derived(seasons, ($seasons: [Season]) => {
     if (!$seasons) return null;
     const dt = new Date();
     const currentYear = dt.getFullYear();
