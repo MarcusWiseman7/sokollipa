@@ -89,17 +89,19 @@
     >
         {#if $nextAGame}
             <!-- Mobile countdown -->
-            {#if isMobile && showTime}
+            {#if isMobile}
                 <div class="flex items-center justify-center h-28 font-bold text-4xl">
-                    <span class="fuzz">
-                        {#if parseInt(days) > 0}
-                            {days}:{hours}:{minutes}:{seconds}
-                        {:else if parseInt(hours) > 0}
-                            {hours}:{minutes}:{seconds}
-                        {:else}
-                            {minutes}:{seconds}
-                        {/if}
-                    </span>
+                    {#if showTime}
+                        <span class="fuzz">
+                            {#if parseInt(days) > 0}
+                                {days}:{hours}:{minutes}:{seconds}
+                            {:else if parseInt(hours) > 0}
+                                {hours}:{minutes}:{seconds}
+                            {:else}
+                                {minutes}:{seconds}
+                            {/if}
+                        </span>
+                    {/if}
                 </div>
             {/if}
 
