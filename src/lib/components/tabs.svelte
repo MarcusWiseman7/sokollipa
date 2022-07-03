@@ -1,9 +1,9 @@
 <script>
     import { activeTab } from '$lib/stores';
 
-    const tabs = ['Tym A', 'Tym B', 'Tym dorost'];
+    const tabs = ['Tym A', 'Tym B'];
     const base_class =
-        'flex items-center justify-center cursor-pointer text-lg w-1/3 py-1 hover:border-b-2 hover:border-green-600 hover:border-opacity-20';
+        'flex items-center justify-center cursor-pointer text-lg w-1/2 py-1 hover:border-b-2 hover:border-green-600 hover:border-opacity-20';
     const active_class = ' border-b-2 border-green-600 hover:border-opacity-100';
 </script>
 

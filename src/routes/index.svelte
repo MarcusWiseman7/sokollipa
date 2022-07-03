@@ -27,21 +27,23 @@
     $: upcomingGames = $currentOrUpcomingASchedule?.hasOwnProperty('schedule') ? getGames() : null;
 </script>
 
-<Hero />
+<div class="h-[75vh]">
+    <Hero />
 
-{#if upcomingGames?.length}
-    <div class="mt-6">
-        <div class="flex items-end">
-            {#if $currentOrUpcomingASchedule?.hasOwnProperty('year')}
-                <h3 class="text-2xl font-semibold mr-2">{$currentOrUpcomingASchedule?.year}</h3>
-            {/if}
-            <h4 class="text-xl">Tym A</h4>
+    {#if upcomingGames?.length}
+        <div class="mt-6">
+            <div class="flex items-end">
+                {#if $currentOrUpcomingASchedule?.hasOwnProperty('year')}
+                    <h3 class="text-2xl font-semibold mr-2">{$currentOrUpcomingASchedule?.year}</h3>
+                {/if}
+                <h4 class="text-xl">Tym A</h4>
+            </div>
+
+            <List>
+                {#each upcomingGames as game}
+                    <ListItem {game} clickable />
+                {/each}
+            </List>
         </div>
-
-        <List>
-            {#each upcomingGames as game}
-                <ListItem {game} clickable />
-            {/each}
-        </List>
-    </div>
-{/if}
+    {/if}
+</div>
