@@ -17,6 +17,7 @@
                             <img
                                 class="w-full h-64 rounded-md object-cover bg-gray-200 shadow-lg"
                                 src={urlFor(photo).width(600).format('webp').url()}
+                                srcset={urlFor(photo).width(1200).format('webp').url()}
                                 alt={photo.alt}
                             />
                             <p class="text-sm italic">{photo.caption || ''}</p>

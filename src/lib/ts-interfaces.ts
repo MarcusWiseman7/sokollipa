@@ -28,3 +28,16 @@ export interface Season {
     year: number;
     schedules: [Schedule];
 }
+
+export interface Player {
+    name: string;
+    position?: string;
+    number?: string;
+    info?: string;
+    photo?: SanityAssetDocument;
+}
+export interface Team {
+    players: [Player];
+    name: string;
+    logo: SanityAssetDocument;
+}

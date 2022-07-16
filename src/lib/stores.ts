@@ -1,7 +1,7 @@
 import { derived, readable, writable } from 'svelte/store';
 import sanity from '$lib/sanity';
 import type { SanityDocument } from '@sanity/client';
-import type { Season } from './ts-interfaces';
+import type { Season, Team } from './ts-interfaces';
 
 /**
  * WRITABLE EXPORTS
@@ -23,6 +23,11 @@ const getGallery = async (): Promise<SanityDocument[]> => {
     const galleryQuery: string = `*[_type == 'photoGallery']`;
     return await sanity.fetch(galleryQuery);
 };
+
+const getTeams = async (): Promise<SanityDocument[]> => {
+    const teamQuery: string = `*[_type == 'team']`;
+    return await sanity.fetch(teamQuery);
+}
 
 const getSeasons = async (): Promise<SanityDocument[]> => {
     const seasonsQuery: string = `
@@ -57,6 +62,10 @@ export const seasons = readable([], set => {
     getSeasons().then(set).catch(err => console.error(err));
 });
 
+export const teams = readable([], set => {
+    getTeams().then(set).catch(err => console.error(err));
+});
+
 export const galleries = readable([], set => {
     getGallery().then(set).catch(err => console.error(err));
 });
@@ -65,6 +74,12 @@ export const galleries = readable([], set => {
 /**
  * DERIVED EXPORTS
  */
+export const lipaA = derived(teams, ($teams: [Team]) => {
+    if (!$teams) return null;
+    const lipaA = $teams.find(t => t.name === 'Sokol Lípa');
+    if (lipaA) return lipaA;
+});
+
 export const currentOrUpcomingASchedule = derived(seasons, ($seasons: [Season]) => {
     if (!$seasons) return null;
     const dt = new Date();
