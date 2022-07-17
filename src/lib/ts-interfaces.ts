@@ -34,7 +34,8 @@ export interface Player {
     position?: string;
     number?: string;
     info?: string;
-    photo?: SanityAssetDocument;
+    profilePhoto?: SanityAssetDocument;
+    avatar?: SanityAssetDocument;
 }
 export interface Team {
     players: [Player];
