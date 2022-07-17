@@ -7,7 +7,7 @@
 <Tabs />
 
 {#if $lipaA?.players?.length && $activeTab === 'Tym A'}
-    <div class="grid grid-cols-1 gap-7 mt-10">
+    <div class="grid grid-cols-1 gap-7 my-10">
         {#each $lipaA.players as player}
             <Player {player} />
         {/each}

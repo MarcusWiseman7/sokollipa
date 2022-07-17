@@ -5,28 +5,30 @@
 </script>
 
 {#if player}
-    <div class="grid gap-5 grid-cols-1 lg:grid-cols-2 w-full lg:h-[440px] shadow-lg rounded-lg">
-        <div class="relative py-[20px]">
+    <div class="lg:flex gap-5 w-full lg:h-[400px] shadow-lg rounded-lg">
+        <div class="relative">
             <h3 class="text-4xl font-semibold text-center mb-6 lg:hidden">{player.name}</h3>
             {#if player.profilePhoto}
                 <img
                     src={urlFor(player.profilePhoto).height(400).format('webp').url()}
                     srcset={urlFor(player.profilePhoto).height(800).format('webp').url()}
                     alt={player.name}
-                    class="max-w-full max-h-[400px] w-auto"
+                    class="max-w-full lg:max-h-[400px] w-full lg:w-auto rounded-lg lg:rounded-r-none"
                     on:contextmenu|preventDefault
                     on:dragstart|preventDefault
                 />
             {/if}
             {#if player.number}
-                <div class="absolute bottom-4 right-4 text-8xl font-['Varsity']">{player.number}</div>
+                <div class="absolute bottom-2 right-2 text-8xl text-white rounded-lg font-['Varsity']">
+                    {player.number}
+                </div>
             {/if}
         </div>
         <div class="py-[20px] px-7 lg:px-0">
             {#if player.avatar}
                 <img
                     src={urlFor(player.avatar).height(80).width(80).format('webp').url()}
-                    srcset={urlFor(player.avatar).height(160).width(80).format('webp').url()}
+                    srcset={urlFor(player.avatar).height(160).width(160).format('webp').url()}
                     alt={player.name}
                     height="80"
                     width="80"
