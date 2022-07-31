@@ -43,7 +43,7 @@
         {/if}
         {#if game?.date}
             <div class="text-lg flex flex-col items-center w-2/5 stats__date">
-                {new Date(game.date).toLocaleDateString()}
+                {new Date(game.date).toLocaleDateString().replace(' ', '')}
             </div>
         {/if}
     </div>
