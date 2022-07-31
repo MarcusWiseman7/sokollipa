@@ -21,7 +21,8 @@
     <div class="flex items-center w-1/3 justify-start team team--home">
         {#if game?.homeTeam?.logo}
             <img
-                src={urlFor(game.homeTeam.logo).height(80).width(80).format('webp').url()}
+                src={urlFor(game.homeTeam.logo).height(40).width(40).format('webp').url()}
+                srcset={urlFor(game.homeTeam.logo).height(80).width(80).format('webp').url()}
                 alt="home team logo"
                 width="40"
                 height="40"
@@ -37,7 +38,7 @@
     <div class="flex flex-col items-center w-2/5 font-semibold stats">
         {#if game?.hasOwnProperty('homeTeamScore') && game?.hasOwnProperty('awayTeamScore')}
             <div class="text-lg flex flex-col items-center w-2/5 stats__score" v-if="!isFutureGame">
-                {game.homeTeamScore} - {game.awayTeamScore}
+                {game.homeTeamScore ? game.homeTeamScore : 0} - {game.awayTeamScore ? game.awayTeamScore : 0}
             </div>
         {/if}
         {#if game?.date}
@@ -53,7 +54,8 @@
         {/if}
         {#if game?.awayTeam?.logo}
             <img
-                src={urlFor(game.awayTeam.logo).height(80).width(80).format('webp').url()}
+                src={urlFor(game.awayTeam.logo).height(40).width(40).format('webp').url()}
+                srcset={urlFor(game.awayTeam.logo).height(80).width(80).format('webp').url()}
                 alt="away team logo"
                 width="40"
                 height="40"

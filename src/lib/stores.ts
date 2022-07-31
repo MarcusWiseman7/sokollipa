@@ -76,7 +76,7 @@ export const galleries = readable([], set => {
  */
 export const lipaA = derived(teams, ($teams: [Team]) => {
     if (!$teams) return null;
-    const lipaA = $teams.find(t => t.name === 'Sokol Lípa');
+    const lipaA = $teams.find(t => t.name === 'Lípa');
     if (lipaA) return lipaA;
 });
 

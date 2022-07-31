@@ -27,7 +27,7 @@
     $: upcomingGames = $currentOrUpcomingASchedule?.hasOwnProperty('schedule') ? getGames() : null;
 </script>
 
-<div class="h-[75vh]">
+<div class="min-h-[75vh]">
     <Hero />
 
     {#if upcomingGames?.length}

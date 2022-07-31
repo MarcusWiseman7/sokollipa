@@ -39,15 +39,16 @@
 
         <div class="mt-6 w-full">
             <div class="lg:w-0 lg:h-0 whitespace-nowrap text-5xl flex justify-between lg:opacity-0 my-4 w-full">
-                <span class="w-1/2 text-center">{homeTeamScore}</span>
+                <span class="w-1/2 text-center">{homeTeamScore ? homeTeamScore : 0}</span>
                 <span class="">-</span>
-                <span class="w-1/2 text-center">{awayTeamScore}</span>
+                <span class="w-1/2 text-center">{awayTeamScore ? awayTeamScore : 0}</span>
             </div>
             <div class="flex justify-between items-center py-5 w-full">
                 <div class="w-1/2 lg:w-1/3 flex flex-col items-center">
                     {#if homeTeam?.logo}
                         <img
-                            src={urlFor(homeTeam.logo).height(160).width(160).format('webp').url()}
+                            src={urlFor(homeTeam.logo).height(80).width(80).format('webp').url()}
+                            srcset={urlFor(homeTeam.logo).height(160).width(160).format('webp').url()}
                             alt="home team logo"
                             height="80"
                             width="80"
@@ -62,13 +63,14 @@
                 </div>
 
                 <div class="w-0 lg:w-1/3 whitespace-nowrap text-5xl flex justify-center opacity-0 lg:opacity-100">
-                    {homeTeamScore} - {awayTeamScore}
+                    {homeTeamScore ? homeTeamScore : 0} - {awayTeamScore ? awayTeamScore : 0}
                 </div>
 
                 <div class="w-1/2 lg:w-1/3 flex flex-col items-center">
                     {#if awayTeam?.logo}
                         <img
-                            src={urlFor(awayTeam.logo).height(160).width(160).format('webp').url()}
+                            src={urlFor(awayTeam.logo).height(80).width(80).format('webp').url()}
+                            srcset={urlFor(awayTeam.logo).height(160).width(160).format('webp').url()}
                             alt="away team logo"
                             height="80"
                             width="80"

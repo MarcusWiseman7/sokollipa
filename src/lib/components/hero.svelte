@@ -110,7 +110,8 @@
                 <div class="flex flex-col items-center w-1/2 lg:w-1/3">
                     {#if $nextAGame?.homeTeam?.logo}
                         <img
-                            src={urlFor($nextAGame.homeTeam.logo).height(80).width(80).format('webp').url()}
+                            src={urlFor($nextAGame.homeTeam.logo).height(100).width(100).format('webp').url()}
+                            srcset={urlFor($nextAGame.homeTeam.logo).height(200).width(200).format('webp').url()}
                             alt="home team logo"
                             width="100"
                             height="100"
@@ -140,7 +141,8 @@
                 <div class="flex flex-col items-center w-1/2 lg:w-1/3">
                     {#if $nextAGame?.awayTeam?.logo}
                         <img
-                            src={urlFor($nextAGame.awayTeam.logo).height(80).width(80).format('webp').url()}
+                            src={urlFor($nextAGame.awayTeam.logo).height(100).width(100).format('webp').url()}
+                            srcset={urlFor($nextAGame.awayTeam.logo).height(200).width(200).format('webp').url()}
                             alt="home team logo"
                             width="100"
                             height="100"
