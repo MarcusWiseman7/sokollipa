@@ -1,0 +1,28 @@
+{
+	"name": "sokollipa",
+	"version": "0.0.1",
+	"private": true,
+    "author": "Marcus Wiseman",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+        "start": "PORT=3030 node build/index.js",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@sanity/client": "^3.4.1",
+		"@sanity/image-url": "^1.0.1",
+		"@sveltejs/adapter-auto": "^1.0.0",
+		"@sveltejs/adapter-node": "^1.0.0",
+		"@sveltejs/kit": "^1.0.0",
+		"sass": "^1.57.1",
+		"svelte": "^3.54.0",
+		"svelte-check": "^2.9.2",
+		"tslib": "^2.4.1",
+		"typescript": "^4.9.3",
+		"vite": "^4.0.0"
+	},
+	"type": "module"
+}
