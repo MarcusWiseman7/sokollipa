@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-        "start": "PORT=3030 node build/index.js",
+        "start": "PORT=3030 node --experimental-specifier-resolution=node build/index.js",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
