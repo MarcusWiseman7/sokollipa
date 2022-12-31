@@ -55,6 +55,12 @@
     $: season = data ? getGames() : null;
 </script>
 
+<svelte:head>
+    <title>Sokol Lípa</title>
+    <meta property="og:title" content="Sokol Lípa" />
+    <meta property="og:url" content="https://sokollipa.cz/" />
+</svelte:head>
+
 <div class="page">
     {#if data?.hero}
         <Hero hero={data.hero} nextGame={data.nextGame} />

@@ -12,6 +12,12 @@
     $: galleries = data?.res;
 </script>
 
+<svelte:head>
+    <title>Sokol Lípa | Fotogalerie</title>
+    <meta property="og:title" content="Sokol Lípa | Fotogalerie" />
+    <meta property="og:url" content="https://sokollipa.cz/gallery/" />
+</svelte:head>
+
 <div class="page">
     <Tabs />
 

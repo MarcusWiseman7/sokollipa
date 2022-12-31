@@ -12,6 +12,12 @@
     $: team = data?.res;
 </script>
 
+<svelte:head>
+    <title>Sokol Lípa | Týmy</title>
+    <meta property="og:title" content="Sokol Lípa | Týmy" />
+    <meta property="og:url" content="https://sokollipa.cz/teams/" />
+</svelte:head>
+
 <div class="page">
     {#if team?.players?.length}
         <div class="players grid grid-cols-1 gap-7 my-10">

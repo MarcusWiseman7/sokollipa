@@ -17,6 +17,12 @@
     $: seasons = data?.res;
 </script>
 
+<svelte:head>
+    <title>Sokol Lípa | Sezóny</title>
+    <meta property="og:title" content="Sokol Lípa | Sezóny" />
+    <meta property="og:url" content="https://sokollipa.cz/seasons/" />
+</svelte:head>
+
 <div class="page">
     <Tabs />
 
