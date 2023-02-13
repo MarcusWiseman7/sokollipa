@@ -6,7 +6,7 @@
     <a href="/">
         <img src={logo} alt="logo" height="120" width="120" />
     </a>
-    <small>Marcus Wiseman | Baby Z &copy; {new Date().getFullYear()}</small>
+    <small>Marcus Wiseman | Zdeňka Kameníková &copy; {new Date().getFullYear()}</small>
 </footer>
 
 <style lang="scss">
@@ -15,15 +15,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        // gap: 40px;
         background-color: var(--color-bg-second);
         color: #fff;
         padding: 16px;
         z-index: var(--z-footer);
-
-        @media (min-width: 1024px) {
-            // padding: 24px;
-        }
     }
 
     a {

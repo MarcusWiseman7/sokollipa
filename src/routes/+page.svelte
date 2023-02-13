@@ -23,7 +23,7 @@
     const getGames = (): IGetGames | null => {
         if (data) {
             const { currentOrUpcomingASeason, lastASeason } = data;
-            if (currentOrUpcomingASeason) {
+            if (currentOrUpcomingASeason?.schedule) {
                 const { year, schedule } = currentOrUpcomingASeason;
                 const dt = new Date();
 
