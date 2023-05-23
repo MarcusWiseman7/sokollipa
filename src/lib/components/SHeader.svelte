@@ -12,6 +12,7 @@
         { name: 'Sezóny', url: '/seasons' },
         { name: 'Týmy', url: '/teams' },
         { name: 'Fotogalerie', url: '/gallery' },
+        { name: 'Publicita', url: '/bob' },
     ];
 
     const setSize = () => (isMobile = window.innerWidth < 1024);
